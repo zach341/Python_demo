@@ -1,0 +1,56 @@
+import time
+from hashlib import md5
+import filecmp
+
+def calMD5ForBigFile(file):    #check大文件的MD5值
+    m = md5()
+    f = open(file, 'rb')
+    buffer = 8192    # why is 8192 | 8192 is fast than 2048
+    while 1:
+        chunk = f.read(buffer)
+        if not chunk : break
+        m.update(chunk)
+    f.close()
+    return m.hexdigest()
+
+if __name__ == '__main__':
+    start_time = time.time()
+    print("zip文件:")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\zip文件\test1.zip'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\zip文件\test2.zip'))
+    print(time.time()-start_time)
+    start_time_1 = time.time()
+    print("avi文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\avi文件\test1.avi'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\avi文件\test2.avi'))
+    print(time.time()-start_time_1)
+    start_time_2 = time.time()
+    print("tar文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\tar文件\test1.tar'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\tar文件\test2.tar'))
+    print(time.time()-start_time_2)
+    start_time_3 = time.time()
+    print("gz文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\gz文件\test1.gz'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\gz文件\test2.gz'))
+    print(time.time()-start_time_3)
+    start_time_4 = time.time()
+    print("iso文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\iso文件\test1.iso'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\iso文件\test2.iso'))
+    print(time.time()-start_time_4)
+    start_time_5 = time.time()
+    print("flv文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\flv文件\test1.flv'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\flv文件\test2.flv'))
+    print(time.time()-start_time_5)
+    start_time_6 = time.time()
+    print("rar文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\rar文件\test1.rar'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\rar文件\test2.rar'))
+    print(time.time()-start_time_6)
+    start_time_7 = time.time()
+    print("txt文件：")
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\txt文件\test1.txt'))
+    print(calMD5ForBigFile(r'D:\md5与filecmp速度测试\txt文件\test2.txt'))
+    print(time.time()-start_time_7)
